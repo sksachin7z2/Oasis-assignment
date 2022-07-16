@@ -39,11 +39,11 @@ function Createform() {
        
         console.log("Form Title: ",header.title,"type:","text");
         console.log("Form Description: ",header.description,"type:","text");
-        question.forEach((question)=>{
+        question.forEach((question,i)=>{
              
-           console.log("question: ",question.questions,"type:","text");
+           console.log(`Question:${i+1}`,question.questions,"type:","text");
 
-           console.log("options", question.options,"type:",question.type)
+           console.log(`Options:${i+1}`, question.options,"type:",question.type)
           
         })
     }
