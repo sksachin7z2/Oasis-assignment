@@ -19,10 +19,12 @@ function Createform() {
     const [question, setQuestion] = useState([{
         questions:"",
         options:[{opt:""}],
+        type:type,
     }])
     const handleaddquestion=(e:React.ChangeEvent<HTMLInputElement>,i:number)=>{
         let arr=[...question];
         arr[i].questions=e.target.value
+       
            setQuestion(arr)
     }
     const handleremovecard=()=>{
@@ -37,11 +39,11 @@ function Createform() {
        
         console.log("Form Title: ",header.title,"type:","text");
         console.log("Form Description: ",header.description,"type:","text");
-        question.map((question)=>{
+        question.forEach((question)=>{
              
            console.log("question: ",question.questions,"type:","text");
 
-           console.log("options", question.options,"type:",`${type}`)
+           console.log("options", question.options,"type:",question.type)
           
         })
     }
@@ -49,7 +51,7 @@ function Createform() {
        let arr=[...question];
        let options=arr[i].options
        let optionnew=[...options,{opt:""}]
-       let card={questions:arr[i].questions,options:optionnew};
+       let card={questions:arr[i].questions,options:optionnew,type:type};
         arr.splice(i,1,card);
             setQuestion(arr);
           }
@@ -97,7 +99,7 @@ function Createform() {
         })
      }
      <div className='flex justify-between'>
-     <div onClick={()=>{setQuestion([...question,{questions:"",options:[{opt:""}]}])}}>
+     <div onClick={()=>{setQuestion([...question,{questions:"",options:[{opt:""}],type:"checkbox"}])}}>
       <button className='font-bold bg-blue-500 px-4 py-3 text-white rounded-md' >add Question</button>  
      </div>
      <div>

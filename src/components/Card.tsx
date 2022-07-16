@@ -1,4 +1,4 @@
-import React,{ useState} from 'react'
+import React,{ useState,useEffect} from 'react'
 import { FC } from 'react'
 import {Dispatch ,SetStateAction} from'react'
 interface Props {
@@ -14,9 +14,13 @@ interface Props {
    nop:Array<object>
    handleaddoption:(arg:number)=>void
    checktype:(arg:string)=>void;
-   setNop:Dispatch<SetStateAction<{ questions: string; options: { opt: string; }[]; }[]>>
+   setNop:Dispatch<SetStateAction<{ questions: string; options: { opt: string; }[];type:string }[]>>
   }
 const Card: FC<Props>=(props):JSX.Element=> {
+    useEffect(() => {
+     props.checktype('checkbox');
+      // eslint-disable-next-line 
+    }, [])
     
     const [option, setOption] = useState('checkbox')
     
